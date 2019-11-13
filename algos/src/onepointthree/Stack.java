@@ -14,17 +14,67 @@ public class Stack<Item> implements Iterable<Item> {
     private int N;
 
     // number of items
-    private class Node { // nested class to define nodes
+    public class Node { // nested class to define nodes
         Item item;
         Node next;
+    }
+
+    public Node getRandomNode() {
+        Node current = first;
+        for (int i = 0; i < Math.floor(Math.random() * N); i++) {
+            current = current.next;
+        }
+        return current;
+    }
+
+    public void removeAfter(Node before) {
+        Node current = first;
+        while (current.next != null) {
+            if (current == before && current.next != null)
+                current.next = current.next.next;
+            current = current.next;
+        }
     }
 
     public boolean isEmpty() {
         return first == null;
     }
 
+    public boolean exists(Item item) {
+        for (Item current : this) {
+            if (item.equals(current))
+                return true;
+        }
+        return false;
+    }
+
+    public void delete(int k) {
+        if ((k == 1)) {
+            first = first.next;
+            return;
+        }
+
+        Node temp = first;
+        if (k <= N) {
+            for (int i = 2; i < k; i++)
+                temp = temp.next;
+            temp.next = temp.next.next;
+        }
+    }
+
     public int size() {
         return N;
+    }
+
+    public void insertAfter(Node previous, Node next){
+        Node current = first;
+        while (current != null) {
+            if (current == previous){
+                
+            }
+                current.next = current.next.next;
+            current = current.next;
+        }
     }
 
     // Or: N == 0.

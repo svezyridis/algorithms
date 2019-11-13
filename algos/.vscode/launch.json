@@ -2,6 +2,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Excercise24",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise24",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise21",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise21",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise20",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise20",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ResizingArrayQueueOfStrings",
+            "request": "launch",
+            "mainClass": "onepointthree.ResizingArrayQueueOfStrings",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise12",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise12",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - InfixToPostFix",
+            "request": "launch",
+            "mainClass": "onepointthree.InfixToPostFix",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - App",
             "request": "launch",
             "mainClass": "app.App",
