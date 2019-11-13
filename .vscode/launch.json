@@ -1,0 +1,38 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise9",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise9",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ResizingArrayStack",
+            "request": "launch",
+            "mainClass": "onepointthree.ResizingArrayStack",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Parentheses",
+            "request": "launch",
+            "mainClass": "onepointthree.Parentheses",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Stack",
+            "request": "launch",
+            "mainClass": "onepointthree.Stack",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestVisualAccumulator",
+            "request": "launch",
+            "mainClass": "TestVisualAccumulator"
+        }
+    ]
+}
