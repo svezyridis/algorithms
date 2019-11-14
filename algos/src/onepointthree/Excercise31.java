@@ -1,8 +1,7 @@
 package onepointthree;
 
 import java.util.Iterator;
-
-import onepointthree.Stack.Node;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Excercise31
@@ -62,7 +61,7 @@ public class Excercise31<Item> implements Iterable<Item> {
      */
 
     public void pop() {
-        System.out.println(N);
+        if(N==0) return;
         if (N > 1) {
             first.next.previous = null;
             first = first.next;
@@ -77,7 +76,7 @@ public class Excercise31<Item> implements Iterable<Item> {
     public DoubleNode getNthNode(int n) {
         if (n <= N) {
             DoubleNode current = first;
-            for (int i = 2; i < n; i++)
+            for (int i = 1; i < n; i++)
                 current = current.next;
             return current;
         }
@@ -90,6 +89,7 @@ public class Excercise31<Item> implements Iterable<Item> {
      * Removes the last element of the list
      */
     public void remove() {
+        if(N==0) return;
         if (N > 1) {
             last.previous.next = null;
             last = last.previous;
@@ -111,18 +111,42 @@ public class Excercise31<Item> implements Iterable<Item> {
 
     void insertBefore(DoubleNode node, Item item) {
         DoubleNode nodeToAdd = new DoubleNode();
-        nodeToAdd.item = item;
-        nodeToAdd.previous = node.previous;
-        nodeToAdd.next = node;
-        node.previous = node;
+            nodeToAdd.item = item;
+            nodeToAdd.next=node;
+        if (node != first) {
+            node.previous.next = nodeToAdd;
+            nodeToAdd.previous = node.previous;
+        }
+        else
+            first=nodeToAdd;
+        node.previous=nodeToAdd;
+        N++;
+    }
+
+    void remove(DoubleNode node){
+        DoubleNode current =first;
+        if(node==first){
+            first=null;
+            
+        }
+        while(current!=null){
+            if(node==current){
+            }
+        }
     }
 
     void insertAfter(DoubleNode node, Item item) {
         DoubleNode nodeToAdd = new DoubleNode();
         nodeToAdd.item = item;
-        nodeToAdd.previous = node;
-        nodeToAdd.next = node.next;
+        nodeToAdd.previous=node;
+        if(node!=last){
+            nodeToAdd.next=node.next;
+            node.next.previous=nodeToAdd;
+        }
+        else
+            last=nodeToAdd;
         node.next = nodeToAdd;
+        N++;
     }
 
     @Override
@@ -146,7 +170,7 @@ public class Excercise31<Item> implements Iterable<Item> {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Excercise31<Integer> dlist = new Excercise31<Integer>();
         dlist.push(3);
         dlist.add(2);
@@ -154,6 +178,7 @@ public class Excercise31<Item> implements Iterable<Item> {
         dlist.push(5);
         dlist.add(1);
 
+
         for (int x : dlist)
             System.out.println(x);
         System.out.println("reversePrint");
@@ -165,9 +190,10 @@ public class Excercise31<Item> implements Iterable<Item> {
         dlist.remove();
         dlist.remove();
         dlist.pop();
+        System.out.println("list after removel");
 
-        for (int x : dlist)
-            System.out.println(x);
+        for (int y : dlist)
+            System.out.println(y);
         System.out.println("reversePrint");
         dlist.reversePrint();
 
@@ -176,13 +202,26 @@ public class Excercise31<Item> implements Iterable<Item> {
         dlist.push(4);
         dlist.push(5);
         dlist.add(1);
-        //dlist.insertAfter(dlist.getNthNode(5), 6);
+        
+        System.out.println("insert before:" + dlist.getNthNode(1).item);
         dlist.insertBefore(dlist.getNthNode(1), 0);
-
-        for (int x : dlist)
-            System.out.println(x);
+       
+        for (int z : dlist)
+            System.out.println(z);
+        TimeUnit.SECONDS.sleep(1);
         System.out.println("reversePrint");
         dlist.reversePrint();
+
+        System.out.println("insert after:" + dlist.getNthNode(3).item);
+        dlist.insertAfter(dlist.getNthNode(3), 6);
+
+        for (int z : dlist)
+            System.out.println(z);
+        TimeUnit.SECONDS.sleep(1);
+        System.out.println("reversePrint");
+        dlist.reversePrint();
+
+
 
     }
 
