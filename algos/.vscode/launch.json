@@ -2,6 +2,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - DoublingRatio",
+            "request": "launch",
+            "mainClass": "onefour.DoublingRatio",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DoublingTest",
+            "request": "launch",
+            "mainClass": "onefour.DoublingTest",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Stopwatch",
+            "request": "launch",
+            "mainClass": "onefour.Stopwatch",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ThreeSum",
+            "request": "launch",
+            "mainClass": "onefour.ThreeSum",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Excercise43",
             "request": "launch",
             "mainClass": "onepointthree.Excercise43",

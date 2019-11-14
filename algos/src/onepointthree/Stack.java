@@ -11,6 +11,7 @@ import edu.princeton.cs.algs4.StdOut;
 public class Stack<Item> implements Iterable<Item> {
 
     private Node first; // top of stack (most recently added node)
+    public Node last;
     private int N;
 
     public void remove(String key) {
