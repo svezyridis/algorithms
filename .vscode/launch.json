@@ -2,6 +2,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Excercise31",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise31",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CircularQeueue",
+            "request": "launch",
+            "mainClass": "onepointthree.CircularQeueue",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise27",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise27",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise26",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise26",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise25",
+            "request": "launch",
+            "mainClass": "onepointthree.Excercise25",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Excercise9",
             "request": "launch",
             "mainClass": "onepointthree.Excercise9",

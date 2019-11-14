@@ -13,6 +13,19 @@ public class Stack<Item> implements Iterable<Item> {
     private Node first; // top of stack (most recently added node)
     private int N;
 
+    public void remove(String key) {
+        Node current = first;
+        if (current.item.equals(key))
+            first = current.next;
+        while (current.next != null) {
+            if (current.next.item.equals(key)) {
+                current.next = current.next.next;
+                continue;
+            }
+            current = current.next;
+        }
+    }
+
     // number of items
     public class Node { // nested class to define nodes
         Item item;
@@ -66,13 +79,19 @@ public class Stack<Item> implements Iterable<Item> {
         return N;
     }
 
-    public void insertAfter(Node previous, Node next){
+    public Node getNewNode() {
+        return new Node();
+    }
+
+    public void insertAfter(Node previous, Node next) {
         Node current = first;
         while (current != null) {
-            if (current == previous){
-                
+            if (current == previous) {
+                Node temp = current.next;
+                current.next = next;
+                next.next = temp;
+                break;
             }
-                current.next = current.next.next;
             current = current.next;
         }
     }
@@ -109,6 +128,7 @@ public class Stack<Item> implements Iterable<Item> {
         }
 
         public void remove() {
+
         }
 
         public Item next() {
