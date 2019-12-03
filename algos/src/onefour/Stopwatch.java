@@ -21,7 +21,7 @@ public class Stopwatch {
         for (int i = 0; i < N; i++)
             a[i] = StdRandom.uniform(-1000000, 1000000);
         Stopwatch timer = new Stopwatch();
-        int cnt = ThreeSum.count(a);
+        int cnt = TwoSumFaster.count(a, 0, a.length - 1, 0);
         double time = timer.elapsedTime();
         StdOut.println(cnt + " triples " + time);
     }

@@ -2,6 +2,202 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Excercise21",
+            "request": "launch",
+            "mainClass": "onefive.Excercise21",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise20",
+            "request": "launch",
+            "mainClass": "onefive.Excercise20",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise18",
+            "request": "launch",
+            "mainClass": "onefive.Excercise18",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ErdosRenyi",
+            "request": "launch",
+            "mainClass": "onefive.ErdosRenyi",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - QuickUnionWithPathCompression",
+            "request": "launch",
+            "mainClass": "onefive.QuickUnionWithPathCompression",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - WeightedQuickUnion",
+            "request": "launch",
+            "mainClass": "onefive.WeightedQuickUnion",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - QuickUnion",
+            "request": "launch",
+            "mainClass": "onefive.QuickUnion",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - UnionFind",
+            "request": "launch",
+            "mainClass": "onefive.UnionFind",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise44",
+            "request": "launch",
+            "mainClass": "onefour.Excercise44",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DoublingRatioNaive",
+            "request": "launch",
+            "mainClass": "onefour.DoublingRatioNaive",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DoublingTestNaive",
+            "request": "launch",
+            "mainClass": "onefour.DoublingTestNaive",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise34",
+            "request": "launch",
+            "mainClass": "onefour.Excercise34",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise26",
+            "request": "launch",
+            "mainClass": "onefour.Excercise26",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise24",
+            "request": "launch",
+            "mainClass": "onefour.Excercise24",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise20",
+            "request": "launch",
+            "mainClass": "onefour.Excercise20",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise19",
+            "request": "launch",
+            "mainClass": "onefour.Excercise19",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Movie",
+            "request": "launch",
+            "mainClass": "Movie",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Pavlatos",
+            "request": "launch",
+            "mainClass": "Pavlatos",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise18",
+            "request": "launch",
+            "mainClass": "onefour.Excercise18",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise17",
+            "request": "launch",
+            "mainClass": "onefour.Excercise17",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise16",
+            "request": "launch",
+            "mainClass": "onefour.Excercise16",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ThreeSumFast",
+            "request": "launch",
+            "mainClass": "onefour.ThreeSumFast",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ThreeSumUltraFaster",
+            "request": "launch",
+            "mainClass": "onefour.ThreeSumUltraFaster",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TwoSumFaster",
+            "request": "launch",
+            "mainClass": "onefour.TwoSumFaster",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Excercise12",
+            "request": "launch",
+            "mainClass": "onefour.Excercise12",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Example",
+            "request": "launch",
+            "mainClass": "onefour.Example",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Exercise3_2",
+            "request": "launch",
+            "mainClass": "onefour.Exercise3_2",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Exercise3",
+            "request": "launch",
+            "mainClass": "onefour.Exercise3",
+            "projectName": "algos"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - DoublingRatio",
             "request": "launch",
             "mainClass": "onefour.DoublingRatio",
