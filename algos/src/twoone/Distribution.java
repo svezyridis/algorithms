@@ -1,10 +1,14 @@
 package twoone;
 
-import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
 
-public class SortCompare {
+import java.awt.*;
+import java.util.ArrayList;
+
+public class Distribution {
+
     public static double time(String alg, Comparable[] a) {
         Stopwatch timer = new Stopwatch();
         if (alg.equals("Insertion")) Insertion.sort(a);
@@ -32,14 +36,26 @@ public class SortCompare {
 
     public static void main(String[] args) {
         String alg1 = args[0];
-        String alg2 = args[1];
+        int T = Integer.parseInt(args[1]);
         int N = Integer.parseInt(args[2]);
-        int T = Integer.parseInt(args[3]);
-        double t1 = timeRandomInput(alg1, N, T); // total for alg1
-        double t2 = timeRandomInput(alg2, N, T); // total for alg2
-        StdOut.printf("For %d random Doubles\n %s is", N, alg1);
-        StdOut.printf(" %.1f times faster than %s\n", t2 / t1, alg2);
+        Double[] a = new Double[N];
+        StdDraw.setCanvasSize(600, 600);
+        StdDraw.setXscale(-1, 1.1 * T);
+        StdDraw.setPenRadius((double) 1 / (double) T * 5);
+        Double total = 0.0;
+        for (int i = 0; i < T; i++) {
+            for (int j = 0; j < N; j++)
+                a[j] = StdRandom.uniform();
+            double time = time(alg1, a);
+            if (i == 0) {
+                StdDraw.setYscale(-1.2 * time, 1.05 * time);
+            }
+            total += time;
+            StdDraw.setPenColor(Color.BLACK);
+            StdDraw.point(i, time);
+            StdDraw.setPenColor(Color.RED);
+            StdDraw.point(i, total / (double) (i + 1));
+        }
+
     }
-
-
 }

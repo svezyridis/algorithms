@@ -1,10 +1,11 @@
 package twoone;
 
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
 
-public class SortCompare {
+public class DoublingTest {
     public static double time(String alg, Comparable[] a) {
         Stopwatch timer = new Stopwatch();
         if (alg.equals("Insertion")) Insertion.sort(a);
@@ -30,16 +31,18 @@ public class SortCompare {
         return total;
     }
 
+
     public static void main(String[] args) {
         String alg1 = args[0];
-        String alg2 = args[1];
-        int N = Integer.parseInt(args[2]);
-        int T = Integer.parseInt(args[3]);
-        double t1 = timeRandomInput(alg1, N, T); // total for alg1
-        double t2 = timeRandomInput(alg2, N, T); // total for alg2
-        StdOut.printf("For %d random Doubles\n %s is", N, alg1);
-        StdOut.printf(" %.1f times faster than %s\n", t2 / t1, alg2);
+        int T = Integer.parseInt(args[1]);
+        int max = Integer.parseInt(args[2]);
+        double t = timeRandomInput(alg1, 1000, T); // total for first time
+        System.out.println("Time for N=1000: " + t / T);
+        for (int N = 2000; N <= max; N *= 2) {
+            double previous = t;
+            t = timeRandomInput(alg1, N, T);
+            System.out.println("Time for N=" + N + ": " + t / T);
+            System.out.println("ratio: " + t / previous);
+        }
     }
-
-
 }

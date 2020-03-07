@@ -10,17 +10,11 @@ public class Shell {
         while (h < N / 3) h = 3 * h + 1;
         while (h >= 1) {
             for (int i = h; i < N; i++) {
-                for (int j = i; j >= h && less(a[j], a[j - h]); j -= h)
+                for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
                     exch(a, j, j - h);
+                }
             }
-            show(a);
             h = h / 3;
-        }
-        for (int i = 0; i < N; i++) {
-            int min = i;
-            for (int j = i + 1; j < N; j++)
-                if (less(a[j], a[min])) min = j;
-            exch(a, i, min);
         }
     }
 

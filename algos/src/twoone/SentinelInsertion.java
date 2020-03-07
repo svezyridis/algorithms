@@ -3,24 +3,20 @@ package twoone;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
-public class Excercise11 {
+public class SentinelInsertion {
+
     public static void sort(Comparable[] a) {
         int N = a.length;
-        int h = 1;
-        int[] sequence = {13, 4, 1};
-        for (int k = 0; k < sequence.length; k++) {
-            h = sequence[k];
-            for (int i = h; i < N; i++) {
-                for (int j = i; j >= h && less(a[j], a[j - h]); j -= h)
-                    exch(a, j, j - h);
-            }
-            show(a);
-        }
+        int min = 0;
         for (int i = 0; i < N; i++) {
-            int min = i;
-            for (int j = i + 1; j < N; j++)
-                if (less(a[j], a[min])) min = j;
-            exch(a, i, min);
+            if (less(a[i], a[min]))
+                min = i;
+        }
+        exch(a, 0, min);
+        for (int i = 1; i < N; i++) { // Insert a[i] among a[i-1], a[i-2], a[i-3]... ..
+            for (int j = i; less(a[j], a[j - 1]); j--) {
+                exch(a, j, j - 1);
+            }
         }
     }
 

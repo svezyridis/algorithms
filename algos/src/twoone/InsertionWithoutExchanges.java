@@ -1,16 +1,20 @@
 package twoone;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
-public class Insertion {
-    public static void sort(Comparable[] a) {
-        int N = a.length;
-        for (int i = 1; i < N; i++) { // Insert a[i] among a[i-1], a[i-2], a[i-3]... ..
-            for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
-                exch(a, j, j - 1);
+public class InsertionWithoutExchanges {
+    public static void sort(Comparable[] array) {
+        for (int i = 0; i < array.length; i++) {
+            Comparable aux = array[i];
+            int j;
+
+            for (j = i; j > 0 && less(aux, array[j - 1]); j--) {
+                array[j] = array[j - 1];
             }
+
+            array[j] = aux;
+            show(array);
         }
     }
 
