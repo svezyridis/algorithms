@@ -3,7 +3,7 @@ package twoone;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
-public class Merge {
+public class MergeBU {
     private static Comparable[] aux;
 
 
@@ -18,10 +18,12 @@ public class Merge {
             else a[k] = aux[i++];
     }
 
-    public static void sort(Comparable[] a) {
-        aux = new Comparable[a.length];
-// Allocate space just once.
-        sort(a, 0, a.length - 1);
+    public static void sort(Comparable[] a) { // Do lg N passes of pairwise merges.
+        int N = a.length;
+        aux = new Comparable[N];
+        for (int sz = 1; sz < N; sz = sz + sz) // sz: subarray size
+            for (int lo = 0; lo < N - sz; lo += sz + sz) // lo: subarray index
+                merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
     }
 
     private static void sort(Comparable[] a, int lo, int hi) { // Sort a[lo..hi].
