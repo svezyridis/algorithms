@@ -3,6 +3,7 @@ package twoone;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
+import twotwo.Exercise10FasterSort;
 
 public class SortCompare {
     public static double time(String alg, Comparable[] a) {
@@ -15,6 +16,7 @@ public class SortCompare {
         if (alg.equals("Heap")) Heap.sort(a);
         if (alg.equals("Exercise11")) Exercise11.sort(a);
         if (alg.equals("Exercise29")) Exercise29.sort(a);
+        if (alg.equals("Exercise10")) Exercise10FasterSort.sort(a);
         if (alg.equals("SentinelInsertion")) SentinelInsertion.sort(a);
         return timer.elapsedTime();
     }

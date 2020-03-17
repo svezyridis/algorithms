@@ -92,18 +92,21 @@ public class Exercise6 {
                 array[i] = StdRandom.uniform();
                 array2[i] = array[i];
             }
-            buCount[N-1] = sortBU(array);
-            tdCount[N-1] = sortTD(array2);
+            buCount[N - 1] = sortBU(array);
+            System.out.println(buCount[N - 1]);
+            tdCount[N - 1] = sortTD(array2);
+            System.out.println(tdCount[N - 1]);
         }
-        StdDraw.setXscale(-1,513);
-        StdDraw.setPenRadius(0.05);
-        StdDraw.setYscale(0,6*log2(512));
-        for(int i=0;i<512;i++){
+        StdDraw.setXscale(-1, 513);
+        StdDraw.setPenRadius(0.01);
+        StdDraw.setYscale(0, 6 * 512 * log2(512));
+        for (int i = 0; i < 512; i++) {
             StdDraw.setPenColor(Color.RED);
-            StdDraw.point(i+1,6*log2(i+1));
+            StdDraw.point(i + 1, 6 * (i + 1) * log2(i + 1));
             StdDraw.setPenColor(Color.BLACK);
-            StdDraw.point(i+1,buCount[i]);
+            StdDraw.point(i + 1, buCount[i]);
             StdDraw.setPenColor(Color.GREEN);
+            StdDraw.point(i + 1, tdCount[i]);
         }
 
     }

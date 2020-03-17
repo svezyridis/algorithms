@@ -1,14 +1,13 @@
-package twoone;
+package twotwo;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.Stopwatch;
 
-public class Merge {
-    private static Comparable[] aux;
+public class Exercise9 {
+    private Comparable[] aux;
 
 
-    public static void merge(Comparable[] a, int lo, int mid, int hi) { // Merge a[lo..mid] with a[mid+1..hi].
+    public static void merge(Comparable[] a, int lo, int mid, int hi, Comparable[] aux) { // Merge a[lo..mid] with a[mid+1..hi].
         int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++)
             aux[k] = a[k];
@@ -20,17 +19,17 @@ public class Merge {
     }
 
     public static void sort(Comparable[] a) {
-        aux = new Comparable[a.length];
+        Comparable[] aux = new Comparable[a.length];
 // Allocate space just once.
-        sort(a, 0, a.length - 1);
+        sort(a, 0, a.length - 1, aux);
     }
 
-    private static void sort(Comparable[] a, int lo, int hi) { // Sort a[lo..hi].
+    private static void sort(Comparable[] a, int lo, int hi, Comparable[] aux) { // Sort a[lo..hi].
         if (hi <= lo) return;
         int mid = lo + (hi - lo) / 2;
-        sort(a, lo, mid); // Sort left half.
-        sort(a, mid + 1, hi); // Sort right half.
-        merge(a, lo, mid, hi); // Merge results (code on page 271).
+        sort(a, lo, mid, aux); // Sort left half.
+        sort(a, mid + 1, hi, aux); // Sort right half.
+        merge(a, lo, mid, hi, aux); // Merge results (code on page 271).
     }
 
     private static boolean less(Comparable v, Comparable w) {
@@ -57,10 +56,9 @@ public class Merge {
 
     public static void main(String[] args) { // Read strings from standard input, sort them, and print.
         String[] a = In.readStrings();
-        Stopwatch timer = new Stopwatch();
         sort(a);
-        System.out.println("elapsed time: " + timer.elapsedTime());
         assert isSorted(a);
-        //show(a);
+        show(a);
     }
+
 }

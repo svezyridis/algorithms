@@ -1,10 +1,8 @@
-package twoone;
+package twotwo;
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.Stopwatch;
+import edu.princeton.cs.algs4.*;
 
-public class Merge {
+public class Exercise10FasterSort {
     private static Comparable[] aux;
 
 
@@ -50,17 +48,38 @@ public class Merge {
     }
 
     public static boolean isSorted(Comparable[] a) { // Test whether the array entries are in order.
-        for (int i = 1; i < a.length; i++)
+        for (int i = 1; i < a.length; i++) {
+            System.out.println(less(a[i], a[i - 1]));
             if (less(a[i], a[i - 1])) return false;
+        }
         return true;
     }
 
     public static void main(String[] args) { // Read strings from standard input, sort them, and print.
         String[] a = In.readStrings();
-        Stopwatch timer = new Stopwatch();
         sort(a);
-        System.out.println("elapsed time: " + timer.elapsedTime());
         assert isSorted(a);
-        //show(a);
+        show(a);
+        Double[] arr = new Double[100000];
+        double mergetotal = 0;
+        for (int j = 0; j < 100; j++) {
+            for (int i = 0; i < 100000; i++)
+                arr[i] = StdRandom.uniform();
+            Stopwatch timer = new Stopwatch();
+            Merge.sort(arr);
+            mergetotal += timer.elapsedTime();
+        }
+
+        System.out.println(mergetotal + " time elapsed for merge");
+
+        double fastermergetotal = 0;
+        for (int j = 0; j < 100; j++) {
+            for (int i = 0; i < 100000; i++)
+                arr[i] = StdRandom.uniform();
+            Stopwatch timer = new Stopwatch();
+            Merge.sort(arr);
+           fastermergetotal += timer.elapsedTime();
+        }
+        System.out.println(fastermergetotal + " time elapsed for fastermerge");
     }
 }

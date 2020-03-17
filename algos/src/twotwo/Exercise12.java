@@ -1,12 +1,12 @@
-package twoone;
+package twotwo;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stopwatch;
 
-public class Merge {
-    private static Comparable[] aux;
+public class Exercise12 {
 
+    private static Comparable[] aux;
 
     public static void merge(Comparable[] a, int lo, int mid, int hi) { // Merge a[lo..mid] with a[mid+1..hi].
         int i = lo, j = mid + 1;
@@ -18,6 +18,18 @@ public class Merge {
             else if (less(aux[j], aux[i])) a[k] = aux[j++];
             else a[k] = aux[i++];
     }
+
+    public static void selectionSort(Comparable[] a, int lo, int hi) {
+        for (int i = lo; i < hi - 1; i++) {
+            int max = i;
+            for (int j = i + 1; j < hi; j++) {
+                if (less(a[max], a[i]))
+                    max = i;
+            }
+            exch(a, i, max);
+        }
+    }
+
 
     public static void sort(Comparable[] a) {
         aux = new Comparable[a.length];
@@ -63,4 +75,5 @@ public class Merge {
         assert isSorted(a);
         //show(a);
     }
+
 }

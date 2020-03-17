@@ -1,14 +1,13 @@
-package twoone;
+package twotwo;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.Stopwatch;
 
-public class Merge {
+public class Exercise16 {
     private static Comparable[] aux;
 
-
     public static void merge(Comparable[] a, int lo, int mid, int hi) { // Merge a[lo..mid] with a[mid+1..hi].
+        System.out.println("merging " + lo + " - " + mid + " with " + (mid + 1) + " " + hi);
         int i = lo, j = mid + 1;
         for (int k = lo; k <= hi; k++)
             aux[k] = a[k];
@@ -17,12 +16,44 @@ public class Merge {
             else if (j > hi) a[k] = aux[i++];
             else if (less(aux[j], aux[i])) a[k] = aux[j++];
             else a[k] = aux[i++];
+        show(a);
     }
 
-    public static void sort(Comparable[] a) {
-        aux = new Comparable[a.length];
-// Allocate space just once.
-        sort(a, 0, a.length - 1);
+    public static void sort(Comparable[] a) { // Do lg N passes of pairwise merges.
+        int N = a.length;
+        aux = new Comparable[N];
+        int lo1 = 0;
+        int hi1 = 0;
+        int lo2 = 0;
+        int hi2 = 0;
+        while (true) {
+            System.out.println(lo1);
+            hi1 = findSortedSubarray(a, lo1);
+            if (lo1 == 0 && hi1 == N - 1)
+                break;
+            System.out.println(hi1);
+            lo2 = hi1 != N - 1 ? hi1 + 1 : hi1;
+            hi2 = findSortedSubarray(a, lo2);
+            System.out.println(hi2);
+            merge(a, lo1, hi1, hi2);
+            if (hi2 == N - 1)
+                lo1 = 0;
+            else
+                lo1 = hi2 + 1;
+
+        }
+
+    }
+
+    private static int findSortedSubarray(Comparable[] array, int lo) {
+        int N = array.length;
+        int result = lo;
+        int i;
+        for (i = lo; i < N; i++) {
+            if (i == N - 1 || !(array[i].compareTo(array[i + 1]) <= 0))
+                break;
+        }
+        return i;
     }
 
     private static void sort(Comparable[] a, int lo, int hi) { // Sort a[lo..hi].
@@ -57,10 +88,8 @@ public class Merge {
 
     public static void main(String[] args) { // Read strings from standard input, sort them, and print.
         String[] a = In.readStrings();
-        Stopwatch timer = new Stopwatch();
         sort(a);
-        System.out.println("elapsed time: " + timer.elapsedTime());
         assert isSorted(a);
-        //show(a);
+        show(a);
     }
 }
