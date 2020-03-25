@@ -3,6 +3,8 @@ package twoone;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
+import twothree.Exercise20NonRecursiveQuickSort;
+import twothree.QuickMedian3;
 import twotwo.Exercise10FasterSort;
 import twotwo.Exercise16NaturalMergeSort;
 
@@ -20,6 +22,8 @@ public class SortCompare {
         if (alg.equals("Exercise10")) Exercise10FasterSort.sort(a);
         if (alg.equals("SentinelInsertion")) SentinelInsertion.sort(a);
         if (alg.equals("NaturalMergeSort")) Exercise16NaturalMergeSort.sort(a);
+        if (alg.equals("Median3")) QuickMedian3.sort(a);
+        if (alg.equals("NonRecursive")) Exercise20NonRecursiveQuickSort.sort(a);
         return timer.elapsedTime();
     }
 

@@ -1,18 +1,15 @@
-package twoone;
+package twothree;
 
-import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.Stopwatch;
+import edu.princeton.cs.algs4.*;
 
-public class Quick {
+public class Exercise20NonRecursiveQuickSort {
+
     private static int partition(Comparable[] a, int lo, int hi) { // Partition into a[lo..i-1], a[i], a[i+1..hi].
         int i = lo, j = hi + 1;
         Comparable v = a[lo];
-
         while (true) {
-            while (less(a[++i], v)) ;
-            while (less(v, a[--j])) ;
+            while (less(a[++i], v)) if (i == hi) break;
+            while (less(v, a[--j])) if (j == lo) break;
             if (i >= j) break;
             exch(a, i, j);
         }
@@ -22,13 +19,23 @@ public class Quick {
 
     public static void sort(Comparable[] a) {
         StdRandom.shuffle(a);
-        int max = 0;
-        for (int i = 1; i < a.length; i++) {
-            if (a[i].compareTo(a[max]) > 0)
-                max = i;
+        Stack<Integer[]> stack = new Stack();
+        stack.push(new Integer[]{0, a.length - 1});
+        while (!stack.isEmpty()) {
+            Integer[] array = stack.pop();
+            int j = partition(a, array[0], array[1]);
+            if (j - array[0] >= array[1] - j) {
+                if (j - array[0] > 1)
+                    stack.push(new Integer[]{array[0], j - 1});
+                if (array[1] - j > 1)
+                    stack.push(new Integer[]{j + 1, array[1]});
+            } else {
+                if (array[1] - j > 1)
+                    stack.push(new Integer[]{j + 1, array[1]});
+                if (j - array[0] > 1)
+                    stack.push(new Integer[]{array[0], j - 1});
+            }
         }
-        exch(a, max, a.length - 1);
-        sort(a, 0, a.length - 1);
     }
 
     private static void sort(Comparable[] a, int lo, int hi) { // Sort a[lo..hi].

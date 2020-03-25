@@ -1,15 +1,22 @@
-package twoone;
+package twothree;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
 
-public class Quick {
-    private static int partition(Comparable[] a, int lo, int hi) { // Partition into a[lo..i-1], a[i], a[i+1..hi].
-        int i = lo, j = hi + 1;
-        Comparable v = a[lo];
+public class QuickMedian3 {
 
+    private static int partition(Comparable[] a, int lo, int hi) { // Partition into a[lo..i-1], a[i], a[i+1..hi].
+        int i = lo, j = hi + 1, mid = lo + (hi - lo) / 2;
+        if (a[lo].compareTo(a[mid]) > 0)
+            exch(a, lo, mid);
+        if (a[mid].compareTo(a[hi]) > 0)
+            exch(a, mid, hi);
+        if (a[lo].compareTo(a[mid]) > 0)
+            exch(a, lo, mid);
+        exch(a, lo, mid);
+        Comparable v = a[lo];
         while (true) {
             while (less(a[++i], v)) ;
             while (less(v, a[--j])) ;
