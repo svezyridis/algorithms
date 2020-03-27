@@ -18,7 +18,7 @@ public class Excercise31<Item> implements Iterable<Item> {
     }
 
     /**
-     * <h1>add</h1> Adds the item to the beggining of the list
+     * <h1>add</h1> Adds the item to the beginning of the list
      * 
      * @param item item to be added
      */
@@ -56,7 +56,7 @@ public class Excercise31<Item> implements Iterable<Item> {
     }
 
     /**
-     * <h2>pop</h2> Removes the item from the beggining of the list
+     * <h2>pop</h2> Removes the item from the beginning of the list
      * 
      */
 
