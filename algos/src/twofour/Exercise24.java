@@ -32,7 +32,6 @@ public class Exercise24<Item extends Comparable<Item>> {
                 nextParent.rightChild = newNode;
         }
         N++;
-        if ()
     }
 
     public boolean assignToNextAvailableLeaf(Node root, Node item) {
