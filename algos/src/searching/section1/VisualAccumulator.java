@@ -1,3 +1,7 @@
+package searching.section1;
+
+import edu.princeton.cs.algs4.StdDraw;
+
 public class VisualAccumulator {
     private double total;
     private int N;
@@ -17,8 +21,12 @@ public class VisualAccumulator {
         StdDraw.point(N, total / N);
     }
 
-    public double mean()
+    public double mean() {
+        return total / N;
+    }
 
-    public String toString()
-// Same as Accumulator.
+    public String toString() {
+        return "Mean (" + N + " values): "
+                + String.format("%7.5f", mean());
+    }
 }
