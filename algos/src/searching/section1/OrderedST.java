@@ -1,7 +1,7 @@
 package searching.section1;
 
 public interface OrderedST<Key extends Comparable<Key>, Value> {
-    void put(Key key, Value val);
+    int put(Key key, Value val);
 
     Value get(Key key);
 
