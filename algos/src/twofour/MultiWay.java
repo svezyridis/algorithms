@@ -1,6 +1,7 @@
 package twofour;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.IndexMinPQ;
 import edu.princeton.cs.algs4.StdOut;
 
 public class MultiWay {
@@ -11,7 +12,7 @@ public class MultiWay {
             if (!streams[i].isEmpty())
                 pq.insert(i, streams[i].readString());
         while (!pq.isEmpty()) {
-            StdOut.println(pq.min());
+            StdOut.println(pq.minKey());
             int i = pq.delMin();
             if (!streams[i].isEmpty())
                 pq.insert(i, streams[i].readString());
