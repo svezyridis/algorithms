@@ -38,9 +38,10 @@ public class MaxPQ<Key extends Comparable<Key>> {
             min = v;
         if (N == pq.length - 1)
             resize(2 * N + 1);
-        pq[++N] = v;
+        pq[++N] = v;;
         swim(N);
     }
+
 
     public void resize(int newSize) {
         Key[] temp = (Key[]) new Comparable[newSize];
