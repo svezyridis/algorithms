@@ -11,7 +11,7 @@ public class EntropyOptimalSort {
         sort(a, 0, a.length - 1);
     }
 
-    private static void sort(Comparable[] a, int lo, int hi) { // See page 289 for public sort() that calls this method.
+    private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo) return;
         int lt = lo, i = lo + 1, gt = hi;
         Comparable v = a[lo];
@@ -25,7 +25,7 @@ public class EntropyOptimalSort {
                 show(a);
             } else
                 i++;
-        } // Now a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
+        }
         sort(a, lo, lt - 1);
         sort(a, gt + 1, hi);
     }

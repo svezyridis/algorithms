@@ -7,6 +7,7 @@ public class VisualAccumulator {
     private int N;
 
     public VisualAccumulator(int trials, double max) {
+        StdDraw.setCanvasSize(800,400);
         StdDraw.setXscale(0, trials);
         StdDraw.setYscale(0, max);
         StdDraw.setPenRadius(.005);

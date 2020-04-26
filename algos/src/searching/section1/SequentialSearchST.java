@@ -20,6 +20,20 @@ public class SequentialSearchST<Key, Value> implements ST<Key, Value> {
     }
 
     @Override
+    public void delete(Key key) {
+        Node previous=null;
+        for(Node current=first;current!=null;current=current.next){
+            if(current.key.equals(key)){
+                if(previous==null)
+                    first=first.next;
+                else
+                    previous.next=current.next;
+            }
+            N--;
+        }
+    }
+
+    @Override
     public int put(Key key, Value val) {
         int count = 0;
         for (Node current = first; current != null; current = current.next) {

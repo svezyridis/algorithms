@@ -18,6 +18,14 @@ public class ArrayST<Key, Value> implements ST<Key, Value> {
         for (int i = 0; i < N; i++) {
             if (keys[i].equals(key)) {
                 values[i] = val;
+                Key temp1 = keys[i];
+                Value temp2 = values[i];
+                for (int j = i; j >= 1; j--) {
+                    keys[j] = keys[j - 1];
+                    values[j] = values[j - 1];
+                }
+                keys[0] = temp1;
+                values[0] = temp2;
                 return i;
             }
         }
@@ -31,7 +39,17 @@ public class ArrayST<Key, Value> implements ST<Key, Value> {
     @Override
     public Value get(Key key) {
         for (int i = 0; i < N; i++) {
-            if (keys[i].equals(key)) return values[i];
+            if (keys[i].equals(key)) {
+                Key temp1 = keys[i];
+                Value temp2 = values[i];
+                for (int j = i; j >= 1; j--) {
+                    keys[j] = keys[j - 1];
+                    values[j] = values[j - 1];
+                }
+                keys[0] = temp1;
+                values[0] = temp2;
+                return temp2;
+            }
         }
         return null;
     }

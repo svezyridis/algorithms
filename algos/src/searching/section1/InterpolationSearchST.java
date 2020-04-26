@@ -1,12 +1,10 @@
 package searching.section1;
 
-import onefour.BinarySearch;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class BinarySearchST<Key extends Comparable<Key>, Value> implements OrderedST<Key, Value> {
+public class InterpolationSearchST<Key extends Integer, Value> {
 
     Item[] items;
     int N;
@@ -22,33 +20,13 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> implements Order
         }
     }
 
-    public BinarySearchST() {
-        items = new BinarySearchST.Item[1];
+    InterpolationSearchST() {
+        items = new InterpolationSearchST.Item[1];
     }
 
-    BinarySearchST(Item[] initialItems) {
-        Arrays.sort(initialItems, new ItemComparator());
-        items = initialItems;
-        N += items.length;
-    }
 
-    public class ItemComparator implements Comparator<Item> {
-
-        @Override
-        public int compare(Item o1, Item o2) {
-            return o1.key.compareTo(o2.key);
-        }
-    }
-
-    @Override
     public int put(Key key, Value val) {
         accesses = 0;
-        if (N > 0 && key.compareTo(items[N - 1].key) >= 0) {
-            if (N == items.length) resize(2 * N);
-            items[N] = new Item(key, val);
-            N++;
-            return 1;
-        }
         int i = rank(key);
         if (i < N && items[i].key.compareTo(key) == 0) {
             items[i].value = val;
@@ -66,14 +44,14 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> implements Order
     }
 
     public void resize(int newSize) {
-        Item[] temp = new BinarySearchST.Item[newSize];
+        Item[] temp = new InterpolationSearchST.Item[newSize];
         for (int i = 0; i < items.length; i++) {
             temp[i] = items[i];
         }
         items = temp;
     }
 
-    @Override
+
     public Value get(Key key) {
         if (isEmpty()) return null;
         int i = rank(key);
@@ -82,22 +60,26 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> implements Order
         return null;
     }
 
-    @Override
+    private boolean isEmpty() {
+        return N == 0;
+    }
+
+
     public int size() {
         return N;
     }
 
-    @Override
+
     public Key min() {
         return items[0].key;
     }
 
-    @Override
+
     public Key max() {
         return items[N - 1].key;
     }
 
-    @Override
+
     public Key floor(Key key) {
         int i = rank(key);
         if (i == N)
@@ -111,19 +93,23 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> implements Order
 
     }
 
-    @Override
+
     public Key ceiling(Key key) {
         int i = rank(key);
         if (i == N) return null;
         return items[i].key;
     }
 
-    @Override
+    public Integer calculate(Integer lo, Integer key, Integer hi) {
+        return ((key - lo) / (hi - key));
+    }
+
+
     public int rank(Key key) {
         int lo = 0;
         int hi = N - 1;
+        int mid = calculate(items[0].key, key, items[N - 1].key);
         while (hi >= lo) {
-            int mid = lo + (hi - lo) / 2;
             int cmp = items[mid].key.compareTo(key);
             accesses++;
             if (cmp > 0)
@@ -132,18 +118,19 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> implements Order
                 lo = mid + 1;
             else
                 return mid;
+            mid = lo + (hi - lo) / 2;
         }
         return lo;
     }
 
-    @Override
+
     public Key select(int k) {
         if (k < N)
             return items[k].key;
         return null;
     }
 
-    @Override
+
     public void delete(Key key) {
         if (isEmpty()) return;
         int i = rank(key);
@@ -156,7 +143,7 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> implements Order
         }
     }
 
-    @Override
+
     public Iterable<Key> keys(Key lo, Key hi) {
         ArrayList<Key> list = new ArrayList<>();
         for (int i = rank(lo); i <= rank(hi); i++) {
