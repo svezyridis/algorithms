@@ -3,7 +3,10 @@ package searching.section2;
 import onepointthree.Queue;
 import searching.section1.OrderedST;
 
-public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, Value> {
+public class Exercise12<Key extends Comparable<Key>, Value> {
+    int accesses;
+    int N;
+    Node root;
 
     private class Node {
         Key key;
@@ -28,10 +31,6 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
         return node.count;
     }
 
-    Node root;
-    int accesses;
-
-    @Override
     public int put(Key key, Value val) {
         accesses = 0;
         root = put(root, key, val);
@@ -40,7 +39,10 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
 
     public Node put(Node root, Key key, Value val) {
         accesses++;
-        if (root == null) return new Node(key, val);
+        if (root == null) {
+            N++;
+            return new Node(key, val);
+        }
         int cmp = key.compareTo(root.key);
         if (cmp == 0) {
             root.val = val;
@@ -49,13 +51,10 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
         } else {
             root.left = put(root.left, key, val);
         }
-        root.count = size(root.left) + size(root.right) + 1;
-        root.height = 1 + Math.max(height(root.right), height(root.left));
-        root.internalPath = size(root.left) + size(root.right) + internalPath(root.left) + internalPath(root.right);
         return root;
     }
 
-    @Override
+
     public Value get(Key key) {
         return get(root, key);
     }
@@ -68,12 +67,12 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
         else return get(root.left, key);
     }
 
-    @Override
+
     public int size() {
-        return size(root);
+        return N;
     }
 
-    @Override
+
     public Key min() {
         return min(root);
     }
@@ -85,7 +84,6 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
     }
 
 
-    @Override
     public Key max() {
         return max(root);
     }
@@ -96,7 +94,7 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
         return max(root.right);
     }
 
-    @Override
+
     public Key floor(Key key) {
         return floor(root, key);
     }
@@ -114,7 +112,7 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
         }
     }
 
-    @Override
+
     public Key ceiling(Key key) {
         return ceiling(root, key);
     }
@@ -132,106 +130,7 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
         }
     }
 
-    @Override
-    public int rank(Key key) {
-        return rank(root, key);
-    }
 
-    public int rank(Node root, Key key) {
-        if (root == null) return 0;
-        int cmp = key.compareTo(root.key);
-        if (cmp == 0) return size(root.left);
-        if (cmp > 0) return size(root.left) + 1 + rank(root.right, key);
-        return rank(root.left, key);
-    }
-
-    @Override
-    public Key select(int k) {
-        return select(root, k);
-    }
-
-    public Key select(Node root, int k) {
-        if (root == null) return null;
-        if (size(root.left) > k) return select(root.left, k);
-        if (size(root.left) == k) return root.key;
-        else return select(root.right, k - size(root.left) - 1);
-    }
-
-    public int recursiveHeight() {
-        return recursiveHeight(root);
-    }
-
-    public int height() {
-        return height(root);
-    }
-
-
-    public int recursiveAvgCompare() {
-        return recursiveInternalPath(root) / size(root) + 1;
-    }
-
-    public int internalPath(Node root) {
-        if (root == null) return 0;
-        return root.internalPath;
-    }
-
-    public int avgCompare() {
-        if (root == null) return 0;
-        return root.internalPath / root.count + 1;
-    }
-
-    public void deleteMin() {
-        root = deleteMin(root);
-    }
-
-    private Node deleteMin(Node root) {
-        if (root == null) return null;
-        if (root.left == null) return root.right;
-        root.left = deleteMin(root.left);
-        root.count = size(root.right) + size(root.left) + 1;
-        return root;
-    }
-
-    public void deleteMax() {
-        root = deleteMax(root);
-    }
-
-    private Node deleteMax(Node root) {
-        if (root == null) return null;
-        if (root.right == null) return root.left;
-        root.right = deleteMax(root.right);
-        root.count = size(root.right) + size(root.left) + 1;
-        return root;
-    }
-
-
-    private int recursiveInternalPath(Node root) {
-        if (root == null) return 0;
-        if (root.left == null && root.right == null) return 0;
-        if (root.right == null) return size(root.left) + internalPath(root.left);
-        if (root.left == null) return size(root.right) + internalPath(root.right);
-        return size(root.right) + size(root.left) + internalPath(root.left) + internalPath(root.right);
-
-    }
-
-
-    private int height(Node root) {
-        if (root == null) return 0;
-        return root.height;
-    }
-
-    private int recursiveHeight(Node root) {
-        if (root == null) return 0;
-        if (root.left == null && root.right == null) return 0;
-        return 1 + Math.max(recursiveHeight(root.left), recursiveHeight(root.right));
-    }
-
-    public Key random() {
-        int dice = (int) Math.floor(Math.random() * size());
-        return select(dice);
-    }
-
-    @Override
     public Iterable<Key> keys(Key lo, Key hi) {
         Queue<Key> queue = new Queue();
         if (hi.compareTo(lo) < 0) return queue;
@@ -253,4 +152,3 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
         addToQueue(queue, root.right, lo, hi);
     }
 }
-
